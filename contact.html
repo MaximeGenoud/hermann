@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricelets Fribourgeois - Alexandra Hermann</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        .header-strip {
+            height: 12px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000000 0px, #000000 30px,
+                #ffffff 30px, #ffffff 60px
+            );
+            border-top: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+                url('https://fribourg.ch/wp-content/uploads/2023/03/Fribourg_FribourgRegion.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5em;
+            font-weight: 300;
+            margin-bottom: 25px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            letter-spacing: -2px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.8em;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+        }
+
+        .hero-content .hero-description {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 0 20px;
+        }
+
+        .intro-section h2 {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #000000;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            color: #000000;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .recipes-section {
+            background: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 0;
+            padding: 50px;
+        }
+
+        .contact-section {
+            background: #000000;
+            color: #ffffff;
+            border-radius: 0;
+            padding: 50px;
+            height: fit-content;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .recipe-card {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 30px;
+        }
+
+        .recipe-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .recipe-name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .recipe-description {
+            color: #000000;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .ingredients-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .ingredient {
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-name {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-details {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .phone-number {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .contact-button {
+            background: #ffffff;
+            color: #000000;
+            border: 3px solid #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .contact-button:hover {
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .products-section {
+            background: #000000;
+            color: #ffffff;
+            padding: 80px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            color: #000000;
+            border: 3px solid #000000;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+        }
+
+        .product-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-price {
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-details {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .product-note {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .order-section {
+            background: #ffffff;
+            border: 5px solid #000000;
+            text-align: center;
+            padding: 50px;
+            margin: 60px 0;
+            color: #000000;
+        }
+
+        .order-title {
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .order-text {
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        .footer {
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 5px solid #000000;
+        }
+
+        .footer-text {
+            font-size: 1.1em;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-section {
+                background-attachment: scroll;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5em;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.5em;
+                letter-spacing: 4px;
+            }
+            
+            .hero-content .hero-description {
+                font-size: 1.2em;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 60vh;
+                min-height: 400px;
+                background-attachment: scroll;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8em;
+                letter-spacing: -1px;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.3em;
+                letter-spacing: 3px;
+            }
+            
+            .hero-content .hero-description {
+                font-size: 1.1em;
+                padding: 0 15px;
+            }
+            
+            .intro-section h2 {
+                font-size: 2em;
+            }
+            
+            .intro-text {
+                font-size: 1.1em;
+            }
+            
+            .recipes-section,
+            .contact-section {
+                padding: 30px;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .product-card {
+                padding: 30px;
+            }
+            
+            .order-section {
+                padding: 30px;
+            }
+            
+            .order-title {
+                font-size: 1.8em;
+            }
+            
+            .order-text {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.1em;
+                letter-spacing: 2px;
+            }
+            
+            .hero-content .hero-description {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .intro-section {
+                padding: 0 10px;
+            }
+            
+            .main-content {
+                padding: 50px 0;
+            }
+            
+            .recipes-section,
+            .contact-section {
+                padding: 25px;
+            }
+            
+            .ingredients-list {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 8px;
+            }
+            
+            .ingredient {
+                padding: 6px 8px;
+                font-size: 0.8em;
+            }
+            
+            .contact-name {
+                font-size: 1.5em;
+            }
+            
+            .contact-details {
+                font-size: 1em;
+            }
+            
+            .phone-number {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.4s; }
+        .stagger-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="header-strip"></div>
+    
+    <section class="hero-section">
+        <div class="hero-content fade-in">
+            <h1>Bricelets Fribourgeois</h1>
+            <p class="subtitle">Terroir & Tradition</p>
+            <p class="hero-description">
+                Au cœur de la magnifique région fribourgeoise, 
+                découvrez nos spécialités artisanales
+            </p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="intro-section fade-in stagger-1">
+                <h2>Saveurs Authentiques du Canton</h2>
+                <p class="intro-text">
+                    Découvrez les véritables bricelets fribourgeois, préparés selon des recettes traditionnelles 
+                    transmises de génération en génération. Chaque produit reflète l'authenticité et la richesse 
+                    gastronomique de notre belle région fribourgeoise.
+                </p>
+            </section>
+
+            <div class="content-grid">
+                <section class="recipes-section fade-in stagger-2">
+                    <h2 class="section-title">Nos Recettes</h2>
+                    
+                    <div class="recipe-card">
+                        <h3 class="recipe-name">Bricelets Traditionnels</h3>
+                        <p class="recipe-description">
+                            Selon la recette traditionnelle fribourgeoise, nos bricelets sont préparés 
+                            avec soin pour vous offrir une texture unique et un goût authentique.
+                        </p>
+                        <div class="ingredients-list">
+                            <div class="ingredient">Crème double</div>
+                            <div class="ingredient">Vin blanc</div>
+                            <div class="ingredient">Sucre</div>
+                            <div class="ingredient">Farine</div>
+                            <div class="ingredient">Eau</div>
+                            <div class="ingredient">Kirsch</div>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card">
+                        <h3 class="recipe-name">Confitures Artisanales</h3>
+                        <p class="recipe-description">
+                            Nos confitures sont préparées avec des fruits frais et des ingrédients naturels, 
+                            selon les méthodes artisanales traditionnelles.
+                        </p>
+                        <div class="ingredients-list">
+                            <div class="ingredient">Sucre</div>
+                            <div class="ingredient">Eau</div>
+                            <div class="ingredient">Fruits</div>
+                        </div>
+                    </div>
+
+                    <div class="recipe-card">
+                        <h3 class="recipe-name">Caramels Maison</h3>
+                        <p class="recipe-description">
+                            Nos caramels sont réalisés selon une recette familiale pour obtenir 
+                            une texture fondante et un goût incomparable.
+                        </p>
+                        <div class="ingredients-list">
+                            <div class="ingredient">Beurre</div>
+                            <div class="ingredient">Sucre</div>
+                            <div class="ingredient">Crème</div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="contact-section fade-in stagger-3">
+                    <h2 class="section-title">Contact</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-name">Alexandra Hermann</div>
+                        <div class="contact-details">Route du château d'Affry 10</div>
+                        <div class="contact-details">1762 Givisiez</div>
+                        <div class="phone-number">079 349 93 35</div>
+                    </div>
+                    
+                    <a href="mailto:alexandra.hermann@bluewin.ch?subject=Commande%20Bricelets%20Fribourgeois&body=Bonjour%20Alexandra,%0D%0A%0D%0AJe%20souhaiterais%20commander:%0D%0A%0D%0A-%20Bricelets:%20______%20pièces%0D%0A-%20Confitures:%20______%20pots%0D%0A-%20Caramels:%20______%20paquets%0D%0A%0D%0AMerci%20et%20meilleures%20salutations" 
+                       class="contact-button">
+                        Commander par Email
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Prix & Produits</h2>
+            
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-icon">🥨</div>
+                    <div class="product-name">Bricelets</div>
+                    <div class="product-price">CHF 8.—</div>
+                    <div class="product-details">10 pièces</div>
+                    <div class="product-note">ou CHF 5.— les 5 pièces</div>
+                </div>
+                
+                <div class="product-card fade-in stagger-1">
+                    <div class="product-icon">🍓</div>
+                    <div class="product-name">Confitures</div>
+                    <div class="product-price">CHF 6.—</div>
+                    <div class="product-details">Pot artisanal</div>
+                    <div class="product-note">Différents parfums</div>
+                </div>
+                
+                <div class="product-card fade-in stagger-2">
+                    <div class="product-icon">🍯</div>
+                    <div class="product-name">Caramels</div>
+                    <div class="product-price">CHF 8.—</div>
+                    <div class="product-details">Faits maison</div>
+                    <div class="product-note">Recette familiale</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section fade-in">
+        <div class="container">
+            <h3 class="order-title">Commandes sur Mesure</h3>
+            <p class="order-text">
+                Contactez-nous pour vos événements spéciaux et commandes en grandes quantités
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Bricelets Fribourgeois - Tradition & Qualité - Canton de Fribourg
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Effet parallaxe léger sur le hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection && window.innerWidth > 1024) {
+                heroSection.style.backgroundPosition = `center ${rate}px`;
+            }
+        });
+    </script>
+</body>
+</html>
